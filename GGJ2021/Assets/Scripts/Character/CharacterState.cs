@@ -8,66 +8,55 @@ using UnityEngine;
     {
         private CharacterGroundedCheck characterGroundedCheck;
         private CharacterController characterController;
-        private CharacterAnimationController characterAnimationController;
 
-        public bool isGrounded;
+        
         public Vector2 movementAxes;
-
+        public bool isGrounded;
+        public bool isHoldingItem;
         public event Action OnIdleState;
         public event Action OnRunState;
         public event Action OnJumpState;
-        public event Action OnTurn;
-
-        private bool isFacingRight = true;
-        public bool isAttacking;
-
+        public event Action OnIdleHoldingItemState;
+        public event Action OnRunHoldingItemState;
+        public event Action OnJumpHoldingItemState;
+        
         public enum PlayerState
         {
             Idle = 0,
             Run = 1,
             Jump = 2,
-            Melee = 3,
+            IdleHoldingItem = 3,
+            RunHoldingItem = 4,
+            JumpHoldingItem = 5, 
         };
-
         public PlayerState myPlayerState;
 
-        #region MonoBehaviourCallBacks
-
-        // Start is called before the first frame update
         void Start()
         {
             characterGroundedCheck = GetComponent<CharacterGroundedCheck>();
             characterController = GetComponent<CharacterController>();
-            characterAnimationController = GetComponent<CharacterAnimationController>();
-
             InitializeDelegates();
         }
 
         private void Update()
         {
-
             if (isGrounded)
             {
                 var moveMagnitude = Mathf.Abs(movementAxes.magnitude);
-                if (moveMagnitude > 0.1f && !IsState(1))
-                {
-                    ChangeState(1);
-                }
-                else if (moveMagnitude < 0.1f && !IsState(0))
-                {
-                    ChangeState(0);
-                }
+                int selectedState = moveMagnitude > 0.1f
+                    ? (isHoldingItem ? 4 : 1)
+                    : (isHoldingItem ? 3 : 0);
+                ChangeState(selectedState);
             }
         }
-
-        #endregion
-
+        
         void InitializeDelegates()
         {
             characterGroundedCheck.onLeaveGroundDelegate += () =>
             {
                 isGrounded = false;
-                ChangeState(2);
+                int selectedState = isHoldingItem ? 5 : 2;
+                ChangeState(selectedState);
             };
             characterGroundedCheck.onLandDelegate += () =>
             {
@@ -82,19 +71,15 @@ using UnityEngine;
             {
                 return true;
             }
-
             return false;
         }
 
         public void ChangeState(int state)
         {
-            //We shouldn't change states if we're already in it
-            if (myPlayerState == (PlayerState) state)
+            if (IsState(state))
             {
                 return;
             }
-
-            var lastPlayerState = myPlayerState;
             myPlayerState = (PlayerState) state;
             switch (state)
             {
@@ -106,6 +91,15 @@ using UnityEngine;
                     break;
                 case 2:
                     OnJumpState?.Invoke();
+                    break; 
+                case 3:
+                    OnIdleHoldingItemState?.Invoke();
+                    break; 
+                case 4:
+                    OnRunHoldingItemState?.Invoke();
+                    break;
+                case 5:
+                    OnJumpHoldingItemState?.Invoke();
                     break;
                 default:
                     print("State does not exist!");

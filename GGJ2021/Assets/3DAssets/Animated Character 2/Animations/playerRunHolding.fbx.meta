@@ -8,7 +8,7 @@ ModelImporter:
     second: Root|Root|Root|0.Targeting Pose|Root|0.Targeting Pose
   - first:
       74: -3608977692862642196
-    second: Root|Root|Root|Run|Root|Run
+    second: RunHoldingItem
   - first:
       74: 6316728384879933617
     second: Root|Root|Root|Run|Root|Run (1)
@@ -70,7 +70,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Root|Root|Root|Run|Root|Run
+      name: RunHoldingItem
       takeName: Root|Root|Root|Run|Root|Run
       internalID: 0
       firstFrame: 0
