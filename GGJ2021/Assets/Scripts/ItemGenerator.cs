@@ -5,8 +5,6 @@ using UnityEngine;
 public class ItemGenerator : MonoBehaviour
 {
     public GameObject[] spawnLocations;
-    public GameObject[] standardItems;
-    public GameObject[] balanceItems;
 
     private static ItemGenerator m_Instance = null;
     public static ItemGenerator Instance
@@ -25,11 +23,11 @@ public class ItemGenerator : MonoBehaviour
     }
 
     // type 0 is standard, type 1 is balance
-    public void GenerateItem(int itemType)
+    public void GenerateItem(GameObject item)
     {
         int randomLocation = Random.Range(0, spawnLocations.Length);
-        GameObject randomItem = itemType == 0 ? standardItems[Random.Range(0, standardItems.Length)] : 
-            balanceItems[Random.Range(0, balanceItems.Length)];
-        GameObject.Instantiate(randomItem, spawnLocations[randomLocation].transform);
+        GameObject newItem = Instantiate(item, spawnLocations[randomLocation].transform);
+        newItem.transform.localScale = new Vector3(1,1,1);
+        //newItem.AddComponent<Item>();
     }
 }

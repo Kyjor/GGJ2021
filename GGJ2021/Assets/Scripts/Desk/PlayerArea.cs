@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class PlayerArea : MonoBehaviour
 {
-    public string itemName;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -23,12 +21,18 @@ public class Item : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Player player = other.GetComponent<Player>();
-            if (!player.holdingItem)
+            if (player.holdingItem)
             {
-                transform.SetParent(player.itemHolder.transform);
-                player.holdingItem = true;
-                player.heldItem = this;
+                Desk.Instance.GiveItem(player.heldItem);
+            } else
+            {
+                Desk.Instance.AskForItem();
             }
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        
     }
 }
