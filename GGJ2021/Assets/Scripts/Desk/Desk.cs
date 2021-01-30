@@ -44,7 +44,8 @@ public class Desk : MonoBehaviour
         if (nextPerson.GiveItem(item))
         {
             Debug.Log("right item");
-            Player.Instance.holdingItem = false;
+            Player.Instance.GetComponent<CharacterState>().isHoldingItem = false;
+            Player.Instance.heldItem.GetComponent<Item>().DropItem();
             Player.Instance.heldItem = null;
         } else
         {

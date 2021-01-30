@@ -3,18 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BalanceItem : MonoBehaviour
+public class BalanceItem : Item
 {
     [SerializeField] private CharacterController characterController;
     [SerializeField] private float tipSpeed = 10f;
     [SerializeField] private float angleWhenItWillFall = 90f;
-    private Rigidbody rb;
-    private bool isHeld;
-
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
+   
+    
 
     private void FixedUpdate()
     {
@@ -24,21 +19,17 @@ public class BalanceItem : MonoBehaviour
             
             if (Mathf.Abs(transform.eulerAngles.x) > angleWhenItWillFall)
             {
-                print("drop");
-                transform.parent = null;
-                isHeld = false;
-                rb.isKinematic = false;
+               base.DropItem();
             }
         } 
     }
 
-    public void OnPickup()
+    public override void OnPickup()
     {
+        base.OnPickup();
         try
         {
             characterController = GetComponentInParent<CharacterController>();
-            rb.isKinematic = true;
-            isHeld = true;
         }
         catch (Exception e)
         {

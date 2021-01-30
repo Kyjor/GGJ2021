@@ -20,10 +20,9 @@ public class PlayerArea : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Player player = other.GetComponent<Player>();
-            if (player.holdingItem)
+            if (Player.Instance.GetComponent<CharacterState>().isHoldingItem)
             {
-                Desk.Instance.GiveItem(player.heldItem);
+                Desk.Instance.GiveItem(Player.Instance.heldItem);
             } else
             {
                 Desk.Instance.AskForItem();
