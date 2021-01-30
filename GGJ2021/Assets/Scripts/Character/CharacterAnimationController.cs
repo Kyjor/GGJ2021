@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,6 +24,20 @@ using UnityEngine;
             characterState.OnIdleState += PlayIdleAnimation;
             characterState.OnRunState += PlayRunAnimation;
             characterState.OnJumpState += PlayJumpAnimation;
+            characterState.OnIdleHoldingItemState += PlayIdleHoldingItemAnimation;
+            characterState.OnRunHoldingItemState += PlayRunHoldingItemAnimation;
+            characterState.OnJumpHoldingItemState += PlayRunHoldingItemAnimation;
+        }
+
+        private void PlayRunHoldingItemAnimation()
+        {
+            anim.Play("RunHoldingItem");
+        }
+
+        private void PlayIdleHoldingItemAnimation()
+        {
+            //anim.Play("IdleHoldingItem");
+            throw new NotImplementedException();
         }
 
         void PlayIdleAnimation()
