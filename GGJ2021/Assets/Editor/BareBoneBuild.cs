@@ -11,7 +11,7 @@ namespace Assets.BuildScripts
 {
     class BareBoneBuild
     {
-        private static string[] scenes = { "Assets/Scenes/SampleScene.unity"};
+        private static string[] scenes = { "Assets/Scenes/Combined.unity"};
 
         static void PerformBuildWindows()
         {
