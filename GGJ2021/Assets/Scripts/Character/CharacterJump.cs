@@ -7,16 +7,17 @@ public class CharacterJump : MonoBehaviour
     private bool isJumpingForTheFirstTime = false;
 
 	public float characterHighestPoint = 0f;
-	public Transform characterHolder;
 	public int jumpsLeft = 1;
 	Rigidbody rb;
 	private CharacterMovement characterMovement;
+	private CharacterState characterState;
 	private CustomGravity customGravity;
 
 	// Start is called before the first frame update
 	void Start()
     {
 		characterMovement = GetComponent<CharacterMovement>();
+		characterState = GetComponent<CharacterState>();
 		rb = GetComponent<Rigidbody>();
 		
 		customGravity = GetComponent<CustomGravity>();
@@ -27,12 +28,12 @@ public class CharacterJump : MonoBehaviour
 	public void Jump(float velocity, bool jump)
 	{	
 	
-		if (characterMovement.m_Grounded  && jump && jumpsLeft > 0)
+		if (characterState.isGrounded  && jump && jumpsLeft > 0)
 		{
 			isJumpingForTheFirstTime = true;
 				rb.velocity += new Vector3(0f, velocity);
 		}
-		else if (!characterMovement.m_Grounded && jump && jumpsLeft > 0)
+		else if (characterState.isGrounded && jump && jumpsLeft > 0)
 		{
 			characterHighestPoint = transform.position.y; //When we are double jumping, the highest point needs to be reset to mitigate fall damage
 			rb.velocity = new Vector3(rb.velocity.x, 0f);
