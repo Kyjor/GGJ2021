@@ -5,16 +5,24 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     public string itemName;
-
-    // Start is called before the first frame update
-    void Start()
+    protected Rigidbody rb;
+    protected bool isHeld;
+    private void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void DropItem()
     {
-        
+        print("drop");
+        transform.parent = null;
+        isHeld = false;
+        rb.isKinematic = false;
     }
+    public virtual void OnPickup()
+    {
+        rb.isKinematic = true;
+        isHeld = true;
+    }
+
 }

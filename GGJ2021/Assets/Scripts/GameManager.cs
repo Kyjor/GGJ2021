@@ -18,6 +18,6 @@ public class GameManager : MonoBehaviour
 
     public void NewItem()
     {
-        ItemGenerator.Instance.GenerateItem(Random.Range(0, 1));
+        //ItemGenerator.Instance.GenerateItem(Random.Range(0, 1));
     }
 }
