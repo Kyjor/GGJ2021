@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +19,14 @@ public class Item : MonoBehaviour
         bc = GetComponent<BoxCollider>();
         heldIndicator = transform.GetChild(0).gameObject;
         canBePickedUp = true;
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            DropItem();
+        }
     }
 
     public virtual void DropItem()

@@ -15,7 +15,6 @@ public class CarEater : MonoBehaviour
     {
         if (other.CompareTag("Car"))
         {
-            print("yo");
 
             Destroy(other.gameObject);
         }

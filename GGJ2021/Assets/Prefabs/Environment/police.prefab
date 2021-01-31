@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1191496831}
   - component: {fileID: 1191496829}
   - component: {fileID: 1191496830}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: police
   m_TagString: Car
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 77026103364569044}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 5, y: 5, z: 10}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 964630487493071173}
   - component: {fileID: 110281225899000576}
   - component: {fileID: 1905498408895574903}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wheel_frontRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 6334551384300847005}
   - component: {fileID: 477681030061150438}
   - component: {fileID: 6383060341702614569}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wheel_backLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 2556030750691024826}
   - component: {fileID: 3896373162385098595}
   - component: {fileID: 8688751788699975737}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 7845904057461857019}
   - component: {fileID: 2571645922113883475}
   - component: {fileID: 4059751071859611673}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: grill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -419,7 +419,7 @@ GameObject:
   - component: {fileID: 7904665471992353915}
   - component: {fileID: 6280320142965694441}
   - component: {fileID: 2754235857588309147}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wheel_frontLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -499,7 +499,7 @@ GameObject:
   - component: {fileID: 1177743964671978619}
   - component: {fileID: 8235520340300456105}
   - component: {fileID: 668052288770215139}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wheel_backRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

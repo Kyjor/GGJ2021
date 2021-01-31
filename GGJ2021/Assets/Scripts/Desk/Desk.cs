@@ -31,6 +31,7 @@ public class Desk : MonoBehaviour
     void Start()
     {
         nextPerson = WaitingLine.Instance.GetFrontOfLine();
+        AskForItem();
     }
 
     // Update is called once per frame
@@ -44,12 +45,15 @@ public class Desk : MonoBehaviour
         if (nextPerson.GiveItem(item))
         {
             Debug.Log("right item");
+            GameManager.Instance.AddScore(1);
+
             Player.Instance.DropItem();
             
             WaitingLine.Instance.UpdatePositions();
             nextPerson = WaitingLine.Instance.GetFrontOfLine();
+            canRequest = true;            
+            AskForItem();
 
-            canRequest = true;
         } else
         {
             Debug.Log("wrong item");

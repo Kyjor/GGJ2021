@@ -92,7 +92,6 @@ using UnityEngine;
             }
 
             characterHolder.transform.localScale = newSize;
-            print(newSize);
             t = 0f;
             while (t < seconds)
             {
