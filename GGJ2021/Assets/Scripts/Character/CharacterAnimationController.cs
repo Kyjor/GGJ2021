@@ -11,6 +11,7 @@ using UnityEngine;
         private CharacterState characterState;
         private Animator anim;
         [SerializeField] private GameObject characterHolder;
+        public ParticleSystem dust;
         private bool isSqueezing;
 
         // Start is called before the first frame update
@@ -25,6 +26,7 @@ using UnityEngine;
             anim = GetComponentInChildren<Animator>();
             characterState.OnIdleState += PlayIdleAnimation;
             characterState.OnRunState += PlayRunAnimation;
+            characterState.OnSprintState += PlaySprintAnimation;
             characterState.OnJumpState += PlayJumpAnimation;
             characterState.OnIdleHoldingItemState += PlayIdleHoldingItemAnimation;
             characterState.OnRunHoldingItemState += PlayRunHoldingItemAnimation;
@@ -32,7 +34,13 @@ using UnityEngine;
             characterState.OnLandAction += () =>
             {
                 Squeeze(1.15f, .95f, 0.1f);
+                dust.Play();
             }; 
+        }
+
+        private void PlaySprintAnimation()
+        {
+            anim.Play("Sprint");
         }
 
         private void PlayRunHoldingItemAnimation()

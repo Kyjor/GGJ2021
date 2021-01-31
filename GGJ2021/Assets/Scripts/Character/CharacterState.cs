@@ -13,13 +13,16 @@ using UnityEngine;
         public Vector2 movementAxes;
         public bool isGrounded;
         public bool isHoldingItem;
+        public bool isSprinting;
         public event Action OnIdleState;
         public event Action OnRunState;
+        public event Action OnSprintState;
         public event Action OnJumpState;
         public event Action OnIdleHoldingItemState;
         public event Action OnRunHoldingItemState;
         public event Action OnJumpHoldingItemState;
         public event Action OnLandAction;
+        
         
         public enum PlayerState
         {
@@ -29,6 +32,7 @@ using UnityEngine;
             IdleHoldingItem = 3,
             RunHoldingItem = 4,
             JumpHoldingItem = 5, 
+            Sprint = 6,
         };
         public PlayerState myPlayerState;
 
@@ -45,7 +49,7 @@ using UnityEngine;
             {
                 var moveMagnitude = Mathf.Abs(movementAxes.magnitude);
                 int selectedState = moveMagnitude > 0.1f
-                    ? (isHoldingItem ? 4 : 1)
+                    ? (isHoldingItem ? 4 : (isSprinting ? 6 : 1))
                     : (isHoldingItem ? 3 : 0);
                 ChangeState(selectedState);
             }
@@ -64,7 +68,9 @@ using UnityEngine;
                 OnLandAction?.Invoke();
                 isGrounded = true;
             };
-            characterController.axesDelegate += (vec2) => { movementAxes = vec2; };
+            characterController.axesDelegate += (vec2, sprinting) => { movementAxes = vec2;
+                isSprinting = sprinting;
+            };
         }
 
         public bool IsState(int stateIndex)
@@ -102,6 +108,9 @@ using UnityEngine;
                     break;
                 case 5:
                     OnJumpHoldingItemState?.Invoke();
+                    break; 
+                case 6:
+                    OnSprintState?.Invoke();
                     break;
                 default:
                     print("State does not exist!");

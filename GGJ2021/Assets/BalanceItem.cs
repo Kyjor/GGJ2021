@@ -8,9 +8,11 @@ public class BalanceItem : Item
     [SerializeField] private CharacterController characterController;
     [SerializeField] private float tipSpeed = 10f;
     [SerializeField] private float angleWhenItWillFall = 90f;
-   
-    
 
+    public override void Start()
+    {
+        base.Start();
+    }
     private void FixedUpdate()
     {
         if (isHeld)

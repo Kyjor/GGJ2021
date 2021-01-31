@@ -17,9 +17,11 @@ public class CharacterController : MonoBehaviour
     float turnSmoothVelocity;
     
     protected bool jump;
+    protected bool sprint;
     
-    public delegate void SetAxes(Vector2 axes);
+    public delegate void SetAxes(Vector2 axes, bool isSprinting);
     public SetAxes axesDelegate;
+    [SerializeField] private float sprintSpeed = 10f;
 
     public virtual void Start()
     {
@@ -44,9 +46,11 @@ public class CharacterController : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
                 Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-                characterMovement.Move(moveDir.normalized, moveSpeed);
+                float speedAdded = sprint ? sprintSpeed : 0;
+                characterMovement.Move(moveDir.normalized, moveSpeed + speedAdded);
             }
             
             jump = false;
+            sprint = false;
     }
 }

@@ -22,11 +22,17 @@ public class PlayerController : CharacterController
 		{
 			//Movement input
 			movementAxes = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-			axesDelegate?.Invoke(movementAxes);
 			if (Input.GetButtonDown("Jump"))
 			{
 				jump = true;
 			}
+
+			if (Input.GetKey(KeyCode.LeftShift))
+			{
+				sprint = true;
+			}			
+			axesDelegate?.Invoke(movementAxes, sprint);
+
 			base.Update();
 		}
 	}
