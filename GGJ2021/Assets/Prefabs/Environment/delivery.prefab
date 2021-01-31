@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6243124381492472512}
   - component: {fileID: 3798317296025249298}
   - component: {fileID: 5744694736604318296}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wheel_backRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 3120752875965518528}
   - component: {fileID: 1284663391207627090}
   - component: {fileID: 6973020838377523744}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wheel_frontLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 5449119395565213694}
   - component: {fileID: 5150969369312396731}
   - component: {fileID: 6669153596427777484}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wheel_frontRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 1223260172}
   - component: {fileID: 1223260170}
   - component: {fileID: 1223260171}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: delivery
   m_TagString: Car
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5182941391779004783}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 5, y: 5, z: 10}
@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 1230889546710235430}
   - component: {fileID: 4637923891185882717}
   - component: {fileID: 2191292480492869778}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wheel_backLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,7 +415,7 @@ GameObject:
   - component: {fileID: 7315252094317598977}
   - component: {fileID: 8137606323824361944}
   - component: {fileID: 4496988122199017090}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 8040000638805201202}
   - component: {fileID: 93392223535953677}
   - component: {fileID: 3951818268338192980}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: door
   m_TagString: Untagged
   m_Icon: {fileID: 0}

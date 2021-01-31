@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2042192872}
   - component: {fileID: 2042192871}
   - component: {fileID: 2042192873}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: sedan
   m_TagString: Car
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863812981272295917}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 5, y: 5, z: 10}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 1562520975311646588}
   - component: {fileID: 1822817577716399417}
   - component: {fileID: 197470536728546638}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wheel_frontRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 4302317195367326083}
   - component: {fileID: 3377291125211609434}
   - component: {fileID: 6942469708080086528}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 5702936127320654244}
   - component: {fileID: 2192459723536183007}
   - component: {fileID: 4636756339435249680}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wheel_backLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 8466553447051897410}
   - component: {fileID: 5756747355197415888}
   - component: {fileID: 4536598403650728610}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wheel_frontLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 618137983079895618}
   - component: {fileID: 7675907004650069648}
   - component: {fileID: 1263638860803109594}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wheel_backRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
