@@ -19,6 +19,7 @@ using UnityEngine;
         public event Action OnIdleHoldingItemState;
         public event Action OnRunHoldingItemState;
         public event Action OnJumpHoldingItemState;
+        public event Action OnLandAction;
         
         public enum PlayerState
         {
@@ -60,6 +61,7 @@ using UnityEngine;
             };
             characterGroundedCheck.onLandDelegate += () =>
             {
+                OnLandAction?.Invoke();
                 isGrounded = true;
             };
             characterController.axesDelegate += (vec2) => { movementAxes = vec2; };

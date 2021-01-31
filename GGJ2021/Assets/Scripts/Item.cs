@@ -24,5 +24,6 @@ public class Item : MonoBehaviour
         rb.isKinematic = true;
         isHeld = true;
     }
+    
 
 }
