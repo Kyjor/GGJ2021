@@ -23,4 +23,16 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void DropItem()
+    {
+        Destroy(heldItem.gameObject);
+        GetComponent<CharacterState>().isHoldingItem = false;
+
+        /*
+        GetComponent<CharacterState>().isHoldingItem = false;
+        GetComponent<Item>().DropItem();
+        GetComponent<Item>().GetComponent<Collider>().isTrigger = false;
+        */
+        heldItem = null;
+    }
 }

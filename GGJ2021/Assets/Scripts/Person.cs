@@ -4,19 +4,44 @@ using UnityEngine;
 
 public class Person : MonoBehaviour
 {
-    private Item item;
-
     public GameObject itemRequest;
 
-    public Person(Item item)
-    {
-        this.item = item;
-    }
+    private Item item;
+    private Transform endMarker;
+    private float speed = 1.5F;
+    private bool moving;
 
     void Start()
     {
-        // temp assign here while we don't have person generator
-        this.item = itemRequest.GetComponent<Item>();
+        endMarker = transform;
+    }
+
+    void Update()
+    {
+        if (moving)
+        {
+            transform.position = Vector3.Lerp(transform.position, 
+                new Vector3(endMarker.position.x, 1.68f, endMarker.position.z), 
+                speed * Time.deltaTime);
+        }
+
+        if (transform.position == endMarker.position)
+        {
+            moving = false;
+        }
+    }
+    
+    public void SetTarget(Transform target)
+    {
+        endMarker = target;
+        moving = true;
+    }
+
+    public void SetItem(GameObject item)
+    {
+        this.itemRequest = item;
+        this.item = item.GetComponent<Item>();
+        DisplayRequestItem(false);
     }
 
     public void DisplayRequestItem(bool isDisplaying)

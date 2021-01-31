@@ -18,16 +18,17 @@ public class CharacterItemPickup : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Item"))
         {
+            var item = other.gameObject.GetComponent<BalanceItem>() ?? other.gameObject.GetComponent<Item>();
+            if (!item.canBePickedUp)
+            {
+                return;
+            }
             other.transform.SetParent(Player.Instance.itemHolder.transform);
             other.transform.localPosition = pickUpHeldPosition;
             other.transform.rotation = Quaternion.Euler(Vector3.zero);
-            Player.Instance.heldItem = other.gameObject.GetComponent<Item>();
+            Player.Instance.heldItem = item;
             characterState.isHoldingItem = true;
-            var item = other.gameObject.GetComponent<BalanceItem>() ?? other.gameObject.GetComponent<Item>();
-            if (item)
-            {
-                item.OnPickup();
-            }
+            item.OnPickup();
         }
     }
 }
