@@ -1,10 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject ItemPromptText;
+    public TextMeshProUGUI scoreField;
+    public TextMeshProUGUI timerField;
+
+    public GameObject endGamePanel;
+    public TextMeshProUGUI endGameScore;
 
     private static UIManager m_Instance = null;
     public static UIManager Instance
@@ -22,20 +28,16 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        
+        timerField.text = "Time Remaining: " + Math.Floor(GameManager.Instance.GetTimeRemaining()).ToString();
+        scoreField.text = "Score: " + GameManager.Instance.GetCurrentScore().ToString();
     }
 
-    public void ItemPrompt(bool active)
+    public void EndGame()
     {
-        ItemPromptText.SetActive(active);
+        endGamePanel.SetActive(true);
+        endGameScore.text = "Score: " + GameManager.Instance.GetCurrentScore().ToString();
     }
 }
