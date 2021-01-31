@@ -25,7 +25,7 @@ public class PlayerArea : MonoBehaviour
                 Desk.Instance.GiveItem(Player.Instance.heldItem);
             } else
             {
-                Desk.Instance.AskForItem();
+                //Desk.Instance.AskForItem();
             }
         }
     }

@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     private int score = 0;
     private float timeRemaining;
     private float gameEndTime;
-    private float gameLength = 300f; // in seconds
+    [SerializeField]private float gameLength = 300f; // in seconds
 
     private static GameManager m_Instance = null;
     public static GameManager Instance
