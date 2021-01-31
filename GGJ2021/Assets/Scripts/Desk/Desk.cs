@@ -7,9 +7,9 @@ public class Desk : MonoBehaviour
     public GameObject playerArea;
     public GameObject personArea;
 
-    public Person nextPerson;
+    private Person nextPerson;
 
-    private bool canRequest;
+    private bool canRequest = true;
 
     private static Desk m_Instance = null;
     public static Desk Instance
@@ -30,7 +30,7 @@ public class Desk : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        nextPerson = WaitingLine.Instance.GetFrontOfLine();
     }
 
     // Update is called once per frame
@@ -44,9 +44,12 @@ public class Desk : MonoBehaviour
         if (nextPerson.GiveItem(item))
         {
             Debug.Log("right item");
-            Player.Instance.GetComponent<CharacterState>().isHoldingItem = false;
-            Player.Instance.heldItem.GetComponent<Item>().DropItem();
-            Player.Instance.heldItem = null;
+            Player.Instance.DropItem();
+            
+            WaitingLine.Instance.UpdatePositions();
+            nextPerson = WaitingLine.Instance.GetFrontOfLine();
+
+            canRequest = true;
         } else
         {
             Debug.Log("wrong item");
@@ -55,8 +58,11 @@ public class Desk : MonoBehaviour
 
     public void AskForItem()
     {
-        nextPerson.DisplayRequestItem(true);
-
-        ItemGenerator.Instance.GenerateItem(nextPerson.itemRequest);
+        if (canRequest)
+        {
+            nextPerson.DisplayRequestItem(true);
+            ItemGenerator.Instance.GenerateItem(nextPerson.itemRequest);
+            canRequest = false;
+        }
     }
 }
