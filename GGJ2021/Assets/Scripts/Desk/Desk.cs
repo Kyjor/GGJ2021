@@ -44,6 +44,8 @@ public class Desk : MonoBehaviour
         if (nextPerson.GiveItem(item))
         {
             Debug.Log("right item");
+            GameManager.Instance.AddScore(1);
+
             Player.Instance.DropItem();
             
             WaitingLine.Instance.UpdatePositions();
