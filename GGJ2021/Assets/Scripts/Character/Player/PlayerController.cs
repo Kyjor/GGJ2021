@@ -22,19 +22,17 @@ public class PlayerController : CharacterController
 		{
 			//Movement input
 			movementAxes = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-			axesDelegate?.Invoke(movementAxes);
 			if (Input.GetButtonDown("Jump"))
 			{
 				jump = true;
 			}
-			rotationX = 0;
-			rotationY = 0;
-			if(Input.GetButton("Fire2"))
+
+			if (Input.GetKey(KeyCode.LeftShift))
 			{
-				rotationX = Input.GetAxis("Mouse X") * sensitivityX;
-				rotationY = Input.GetAxis("Mouse Y") * sensitivityY;
-			}
-			rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
+				sprint = true;
+			}			
+			axesDelegate?.Invoke(movementAxes, sprint);
+
 			base.Update();
 		}
 	}
