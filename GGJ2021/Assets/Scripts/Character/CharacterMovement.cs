@@ -26,16 +26,15 @@ public class CharacterMovement : MonoBehaviour
 	    // //only control the player if grounded or airControl is turned on
 		if (characterState.isGrounded || m_AirControl)
 		{
-			rb.AddForce(dir * Time.deltaTime * moveSpeed);
-		// 	if(!m_Grounded)
-		// 	{
-		// 		velocityX *= m_AirSpeed;
-		// 		velocityZ *= m_AirSpeed;
-		// 	}
-		// 	// Move the character by finding the target velocity
-		// 	Vector3 targetVelocity = new Vector3(velocityX, m_Rigidbody.velocity.y, velocityZ);
-		// 	// And then smoothing it out and applying it to the character
-		// 	m_Rigidbody.velocity = Vector3.SmoothDamp(m_Rigidbody.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+			if(!characterState.isGrounded)
+			{
+				dir.x *= m_AirSpeed;
+				dir.z *= m_AirSpeed;
+			}
+			// Move the character by finding the target velocity
+			Vector3 targetVelocity = new Vector3(dir.x*moveSpeed, rb.velocity.y, dir.z*moveSpeed);
+			// And then smoothing it out and applying it to the character
+			rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 		 }
 	}
 

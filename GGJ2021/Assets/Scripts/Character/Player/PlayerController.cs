@@ -27,14 +27,6 @@ public class PlayerController : CharacterController
 			{
 				jump = true;
 			}
-			rotationX = 0;
-			rotationY = 0;
-			if(Input.GetButton("Fire2"))
-			{
-				rotationX = Input.GetAxis("Mouse X") * sensitivityX;
-				rotationY = Input.GetAxis("Mouse Y") * sensitivityY;
-			}
-			rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
 			base.Update();
 		}
 	}
