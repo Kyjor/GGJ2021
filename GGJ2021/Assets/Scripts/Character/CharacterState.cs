@@ -2,9 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 
-    public class CharacterState : MonoBehaviour
+public class CharacterState : MonoBehaviour
     {
         private CharacterGroundedCheck characterGroundedCheck;
         private CharacterController characterController;
@@ -117,6 +118,5 @@ using UnityEngine;
                     break;
             }
         }
-        
     }
 
